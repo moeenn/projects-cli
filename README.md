@@ -1,5 +1,5 @@
 ## Projects
-A portable tool for initializing programming projects from templates.
+A simple portable tool for initializing programming projects from templates. This tools is written in GoLang and doesn't have any 3rd-party dependencies.
 
 
 ### Installation
