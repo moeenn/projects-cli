@@ -4,8 +4,8 @@ import (
 	"embed"
 	"flag"
 	"fmt"
+	"github.com/moeenn/projects/internal/cpp"
 	"os"
-	"projects/internal/cpp"
 	"text/template"
 )
 
@@ -38,6 +38,6 @@ func main() {
 }
 
 func exit(message string) {
-	fmt.Fprintf(os.Stderr, "Error: "+message)
+	fmt.Fprintf(os.Stderr, "Error: %s\n", message)
 	os.Exit(1)
 }

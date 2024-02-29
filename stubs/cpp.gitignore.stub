@@ -1,4 +1,4 @@
-{{ define "cpp.gitignore.stub" }}
+{{ define "cpp.gitignore" }}
 bin/*
 *.o
 .cache

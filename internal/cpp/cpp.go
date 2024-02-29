@@ -72,7 +72,7 @@ func (pt *CppProjectTemplate) initFiles() error {
 	}
 	defer gitignoreFile.Close()
 
-	err = pt.Templates.ExecuteTemplate(gitignoreFile, "cpp.gitignore.stub", nil)
+	err = pt.Templates.ExecuteTemplate(gitignoreFile, "cpp.gitignore", nil)
 	if err != nil {
 		return err
 	}
@@ -85,7 +85,7 @@ func (pt *CppProjectTemplate) initFiles() error {
 	}
 	defer mainCppFile.Close()
 
-	err = pt.Templates.ExecuteTemplate(mainCppFile, "cpp.main_cpp.stub", nil)
+	err = pt.Templates.ExecuteTemplate(mainCppFile, "cpp.main_cpp", nil)
 	if err != nil {
 		return err
 	}
@@ -98,10 +98,11 @@ func (pt *CppProjectTemplate) initFiles() error {
 	}
 	defer makefile.Close()
 
-	err = pt.Templates.ExecuteTemplate(makefile, "cpp.makefile.stub", MakeFileStubArgs{
+	makeFileArgs := MakeFileStubArgs{
 		ProjectName: pt.ProjectName,
-	})
+	}
 
+	err = pt.Templates.ExecuteTemplate(makefile, "cpp.makefile", makeFileArgs)
 	if err != nil {
 		return err
 	}

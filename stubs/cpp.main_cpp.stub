@@ -1,4 +1,4 @@
-{{ define "cpp.main_cpp.stub" }}
+{{ define "cpp.main_cpp" }}
 #include <iostream>
 
 int main() { 

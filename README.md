@@ -17,3 +17,9 @@ Usage of ./projects:
   -template string
         Project template to use. Valid options are 'cpp', 'TODO' (default "cpp")
 ```
+
+### Build from source
+
+```bash
+$ go build .
+```
