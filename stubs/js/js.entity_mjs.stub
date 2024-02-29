@@ -1,0 +1,82 @@
+{{ define "js.entity_mjs" }}
+export const Direction = {
+  Up: "Up",
+  Down: "Down",
+  Left: "Left",
+  Right: "Right",
+}
+
+export class Position {
+  /** @property {number} */
+  x
+
+  /** @property {number} */
+  y
+
+  /**
+   * @constructor
+   * @param {number} x
+   * @param {number} y
+   */
+  constructor(x, y) {
+    this.x = x
+    this.y = y
+  }
+
+  /**
+   * @public
+   * @returns {string}
+   */
+  serialize() {
+    return `(${this.x}, ${this.y})`
+  }
+}
+
+export class Entity {
+  /** @property {string} */
+  name
+
+  /** @property {Position} */
+  position
+
+  /** @property {number} */
+  step = 10
+
+  /**
+   *
+   * @param {string} name
+   * @param {Position} position
+   */
+  constructor(name, position) {
+    this.name = name
+    this.position = position
+  }
+
+  /**
+   *
+   * @param {Direction[keyof typeof Direction]} direction
+   * @returns {Position}
+   */
+  move(direction) {
+    switch (direction) {
+      case Direction.Up:
+        this.position.y += this.step
+        break
+
+      case Direction.Down:
+        this.position.y -= this.step
+        break
+
+      case Direction.Left:
+        this.position.x -= this.step
+        break
+
+      case Direction.Right:
+        this.position.x += this.step
+        break
+    }
+
+    return this.position
+  }
+}
+{{ end }}

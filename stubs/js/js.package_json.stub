@@ -1,0 +1,57 @@
+{{ define "js.package_json" }}
+{
+  "name": "{{ .ProjectName }}",
+  "version": "1.0.0",
+  "main": "src/index.mjs",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./src/index.mjs",
+    "type-check": "tsc --project jsconfig.json",
+    "test": "node --test",
+    "lint": "npx eslint ./src/ --ext .mjs",
+    "fmt": "npx prettier --write 'src/**/*.mjs'",
+    "check": "npm run type-check && npm run lint"
+  },
+  "imports": {
+    "#src/*": "./src/*"
+  },
+  "prettier": {
+    "singleQuote": false,
+    "semi": false,
+    "tabWidth": 2,
+    "trailingComma": "all"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": "eslint:recommended",
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": "latest"
+    },
+    "rules": {
+      "quotes": [
+        2,
+        "double",
+        {
+          "allowTemplateLiterals": true,
+          "avoidEscape": true
+        }
+      ],
+      "semi": [
+        "error",
+        "never"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.22",
+    "eslint": "^8.35.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
+  }
+}
+{{ end }}

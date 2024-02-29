@@ -1,0 +1,27 @@
+{{ define "js.jsconfig_json" }}
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "alwaysStrict": true,
+    "target": "ES2015",
+    "moduleResolution": "node",
+    "noImplicitOverride": false,
+    "paths": {
+      "#src/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/node_modules/*"
+  ]
+}
+{{ end }}
