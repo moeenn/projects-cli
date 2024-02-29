@@ -1,6 +1,7 @@
 package cpp
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"text/template"
@@ -25,6 +26,7 @@ func NewProject(projectName string, cwd string, tmpl *template.Template) *CppPro
 }
 
 func (pt *CppProjectTemplate) Initialize() error {
+	fmt.Printf("Initializing new C++ project: %s\n", pt.ProjectName)
 	err := pt.initDirectoryStructure()
 	if err != nil {
 		return err
