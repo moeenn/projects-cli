@@ -1,0 +1,7 @@
+{{ define "cpp.main_cpp.stub" }}
+#include <iostream>
+
+int main() { 
+	std::cout << "hello world\n"; 
+}
+{{ end }}

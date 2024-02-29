@@ -1,0 +1,7 @@
+{{ define "cpp.gitignore.stub" }}
+bin/*
+*.o
+.cache
+compile_commands.json
+.DS_Store
+{{ end }}
