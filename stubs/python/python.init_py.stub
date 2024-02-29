@@ -1,0 +1,2 @@
+{{ define "python.init_py" }}
+{{ end }}

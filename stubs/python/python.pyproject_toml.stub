@@ -1,0 +1,13 @@
+{{ define "python.pyproject_toml" }}
+[project]
+name = "{{ .ProjectName }}"
+version = "1.0.0"
+dependencies = [
+    "invoke",
+    "ruff",
+    "black",
+]
+
+[tool.black]
+line-length = 80
+{{ end }}

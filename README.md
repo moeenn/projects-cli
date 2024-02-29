@@ -15,7 +15,7 @@ Usage of ./projects:
   -name string
         Name of project being initialized (default "sandbox")
   -template string
-        Project template to use. Valid options are 'cpp', 'js', 'java-gradle' (default "cpp")
+        Project template to use. Valid options are 'cpp', 'js', 'java-gradle', 'python' (default "cpp")
 ```
 
 ### Build from source

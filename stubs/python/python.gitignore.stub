@@ -1,0 +1,9 @@
+{{ define "python.gitignore" }}
+.venv
+*.pyc
+__pycache__
+.vscode
+build
+*.egg-info
+.*_cache
+{{ end }}
