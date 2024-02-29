@@ -15,7 +15,7 @@ Usage of ./projects:
   -name string
         Name of project being initialized (default "sandbox")
   -template string
-        Project template to use. Valid options are 'cpp', 'TODO' (default "cpp")
+        Project template to use. Valid options are 'cpp', 'js' (default "cpp")
 ```
 
 ### Build from source
