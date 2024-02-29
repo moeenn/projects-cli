@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/moeenn/projects/internal/cpp"
+	"github.com/moeenn/projects/internal/javaGradle"
 	"github.com/moeenn/projects/internal/js"
 	"os"
 	"text/template"
@@ -14,7 +15,7 @@ import (
 var stubFS embed.FS
 
 func main() {
-	templatePtr := flag.String("template", "cpp", "Project template to use. Valid options are 'cpp', 'js'")
+	templatePtr := flag.String("template", "cpp", "Project template to use. Valid options are 'cpp', 'js', 'java-gradle'")
 	projectNamePtr := flag.String("name", "sandbox", "Name of project being initialized")
 	flag.Parse()
 
@@ -26,6 +27,7 @@ func main() {
 	stubTemplates := template.Must(template.ParseFS(stubFS, "stubs/**/*.stub"))
 	cppTemplate := cpp.NewProject(*projectNamePtr, cwd, stubTemplates)
 	jsTemplate := js.NewProject(*projectNamePtr, cwd, stubTemplates)
+	javaGradleTemplate := javaGradle.NewProject(*projectNamePtr, cwd, stubTemplates)
 
 	switch *templatePtr {
 	case "cpp":
@@ -36,6 +38,12 @@ func main() {
 
 	case "js":
 		err := jsTemplate.Initialize()
+		if err != nil {
+			exit(err.Error())
+		}
+
+	case "java-gradle":
+		err := javaGradleTemplate.Initialize()
 		if err != nil {
 			exit(err.Error())
 		}

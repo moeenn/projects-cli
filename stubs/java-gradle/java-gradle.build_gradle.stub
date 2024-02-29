@@ -1,0 +1,35 @@
+{{ define "java-gradle.build_gradle" }}
+plugins {
+    id 'java'
+    id 'application'
+}
+
+application {
+    mainClass = 'com.{{ .ProjectName }}.Main'
+}
+
+repositories { 
+    mavenCentral() 
+}
+
+jar {
+    archiveVersion =  '0.0.1'
+    archiveBaseName = 'com.{{ .ProjectName }}'
+    manifest {
+        attributes['Main-Class'] = 'com.{{ .ProjectName }}.Main'
+    }
+}
+
+testing {
+    suites {
+        test {
+            useJUnitJupiter('5.9.3')
+        }
+    }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
+}
+{{ end }}

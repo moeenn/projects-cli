@@ -1,0 +1,8 @@
+{{ define "java-gradle.gitignore" }}
+.gradle
+.vscode
+bin
+build
+*.class
+.DS_Store
+{{ end }}
