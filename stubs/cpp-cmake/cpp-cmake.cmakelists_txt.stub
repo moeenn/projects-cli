@@ -1,18 +1,19 @@
 {{ define "cpp-cmake.cmakelists_txt" }}
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required (VERSION 3.5)
 
 set (project_name "{{ .ProjectName }}")
 project (${project_name})
 
-set (comp_flags "-Wextra -Werror -Wall -Wpedantic -std=c++20 -O3")
+set (CMAKE_CXX_STANDARD 20)
+set (comp_flags "-Wextra -Werror -Wall -Wpedantic -O3")
 set (CMAKE_BUILD_TYPE Debug)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${comp_flags}")
 set (src_dir "${PROJECT_SOURCE_DIR}/src/")
 
 file (GLOB_RECURSE source_files "${src_dir}/*.cpp")
-add_executable(${project_name} ${source_files})
+add_executable (${project_name} ${source_files})
 
 # link libraries (i.e. m means -lm)
-target_link_libraries(${project_name} m)
-set(EXECUTABLE_OUTPUT_PATH "bin")
+target_link_libraries (${project_name} m)
+set (EXECUTABLE_OUTPUT_PATH "bin")
 {{ end }}
