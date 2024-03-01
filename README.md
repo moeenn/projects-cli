@@ -11,11 +11,11 @@ $ go install github.com/moeenn/projects@latest
 ### Usage
 
 ```
-Usage of ./projects:
+Usage of projects:
   -name string
         Name of project being initialized (default "sandbox")
   -template string
-        Project template to use. Valid options are 'cpp', 'js', 'java-gradle', 'python' (default "cpp")
+        Project template to use. Valid options are 'cpp-make', 'cpp-cmake', 'js', 'java-gradle', 'python' (default "cpp")
 ```
 
 ### Build from source
