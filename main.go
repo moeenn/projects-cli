@@ -4,15 +4,13 @@ import (
 	"embed"
 	"flag"
 	"fmt"
-	"path/filepath"
-
 	"github.com/moeenn/projects/internal/templates"
 	"github.com/moeenn/projects/internal/templates/cpp"
-
-	// "github.com/moeenn/projects/internal/templates/javaGradle"
-	// "github.com/moeenn/projects/internal/templates/js"
-	// "github.com/moeenn/projects/internal/templates/python"
+	"github.com/moeenn/projects/internal/templates/javaGradle"
+	"github.com/moeenn/projects/internal/templates/js"
+	"github.com/moeenn/projects/internal/templates/python"
 	"os"
+	"path/filepath"
 	"text/template"
 )
 
@@ -41,16 +39,14 @@ func main() {
 	case "cpp":
 		err = cpp.Initialize(templateArgs)
 
-	/*
-		case "js":
-			err = jsTemplate.Initialize()
+	case "js":
+		err = js.Initialize(templateArgs)
 
-		case "java-gradle":
-			err = javaGradleTemplate.Initialize()
+	case "java-gradle":
+		err = javaGradle.Initialize(templateArgs)
 
-		case "python":
-			err = pythonTemplate.Initialize()
-	*/
+	case "python":
+		err = python.Initialize(templateArgs)
 
 	default:
 		err = fmt.Errorf("Invalid project template name: %s", *templatePtr)
