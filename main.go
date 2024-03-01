@@ -4,10 +4,14 @@ import (
 	"embed"
 	"flag"
 	"fmt"
+	"path/filepath"
+
+	"github.com/moeenn/projects/internal/templates"
 	"github.com/moeenn/projects/internal/templates/cpp"
-	"github.com/moeenn/projects/internal/templates/javaGradle"
-	"github.com/moeenn/projects/internal/templates/js"
-	"github.com/moeenn/projects/internal/templates/python"
+
+	// "github.com/moeenn/projects/internal/templates/javaGradle"
+	// "github.com/moeenn/projects/internal/templates/js"
+	// "github.com/moeenn/projects/internal/templates/python"
 	"os"
 	"text/template"
 )
@@ -22,46 +26,38 @@ func main() {
 
 	cwd, err := os.Getwd()
 	if err != nil {
-		exit("Failed to detect project current directory: " + err.Error())
+		fmt.Fprintf(os.Stderr, "Failed to detect project current directory: %s", err.Error())
+		os.Exit(1)
 	}
 
 	stubTemplates := template.Must(template.ParseFS(stubFS, "stubs/**/*.stub"))
-	cppTemplate := cpp.NewProject(*projectNamePtr, cwd, stubTemplates)
-	jsTemplate := js.NewProject(*projectNamePtr, cwd, stubTemplates)
-	javaGradleTemplate := javaGradle.NewProject(*projectNamePtr, cwd, stubTemplates)
-	pythonTemplate := python.NewProject(*projectNamePtr, cwd, stubTemplates)
+	templateArgs := &templates.TemplateArgs{
+		Templates:   stubTemplates,
+		ProjectName: *projectNamePtr,
+		RootPath:    filepath.Join(cwd, *projectNamePtr),
+	}
 
 	switch *templatePtr {
 	case "cpp":
-		err := cppTemplate.Initialize()
-		if err != nil {
-			exit(err.Error())
-		}
+		err = cpp.Initialize(templateArgs)
 
-	case "js":
-		err := jsTemplate.Initialize()
-		if err != nil {
-			exit(err.Error())
-		}
+	/*
+		case "js":
+			err = jsTemplate.Initialize()
 
-	case "java-gradle":
-		err := javaGradleTemplate.Initialize()
-		if err != nil {
-			exit(err.Error())
-		}
+		case "java-gradle":
+			err = javaGradleTemplate.Initialize()
 
-	case "python":
-		err := pythonTemplate.Initialize()
-		if err != nil {
-			exit(err.Error())
-		}
+		case "python":
+			err = pythonTemplate.Initialize()
+	*/
 
 	default:
-		exit("Invalid project template name: " + *templatePtr)
+		err = fmt.Errorf("Invalid project template name: %s", *templatePtr)
 	}
-}
 
-func exit(message string) {
-	fmt.Fprintf(os.Stderr, "Error: %s\n", message)
-	os.Exit(1)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error: %s\n", err.Error())
+		os.Exit(1)
+	}
 }
