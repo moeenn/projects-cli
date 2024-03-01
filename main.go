@@ -53,6 +53,10 @@ func main() {
 	}
 
 	if err != nil {
+		// remove any created files in case of error
+		os.Remove(templateArgs.RootPath)
+
+		// report the error
 		fmt.Fprintf(os.Stderr, "Error: %s\n", err.Error())
 		os.Exit(1)
 	}
