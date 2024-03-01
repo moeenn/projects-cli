@@ -1,0 +1,7 @@
+{{ define "cpp-cmake.main_cpp" }}
+#include <iostream>
+
+int main() { 
+  std::cout << "Hello world\n"; 
+}
+{{ end }}

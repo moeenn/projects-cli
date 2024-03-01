@@ -1,4 +1,4 @@
-{{ define "cpp.gitignore" }}
+{{ define "cpp-make.gitignore" }}
 bin/*
 *.o
 .cache

@@ -1,0 +1,10 @@
+{{ define "cpp-cmake.gitignore" }}
+CMakeFiles/*
+cmake_install.cmake
+CMakeCache.txt
+Makefile
+.cache
+compile_commands.json
+bin
+.DS_Store
+{{ end }}

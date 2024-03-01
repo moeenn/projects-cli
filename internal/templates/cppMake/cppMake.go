@@ -1,4 +1,4 @@
-package cpp
+package cppMake
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 )
 
 func Initialize(args *templates.TemplateArgs) error {
-	fmt.Printf("Initializing new C++ project: %s\n", args.ProjectName)
+	fmt.Printf("Initializing new C++ (Make) project: %s\n", args.ProjectName)
 	err := initDirectoryStructure(args)
 	if err != nil {
 		return err
@@ -39,34 +39,28 @@ func initDirectoryStructure(args *templates.TemplateArgs) error {
 	// create bin directory
 	binPath := filepath.Join(args.RootPath, "bin")
 	err = os.Mkdir(binPath, os.ModePerm)
-	if err != nil {
-		return err
-	}
 
-	return nil
+	return err
 }
 
 func initFiles(args *templates.TemplateArgs) error {
 	// create gitignore
 	gitignorePath := filepath.Join(args.RootPath, ".gitignore")
-	err := templates.CreateFileFromTemplate(args.Templates, gitignorePath, "cpp.gitignore", nil)
+	err := templates.CreateFileFromTemplate(args.Templates, gitignorePath, "cpp-make.gitignore", nil)
 	if err != nil {
 		return err
 	}
 
 	// create main.cpp file
 	mainCppPath := filepath.Join(args.RootPath, "src", "main.cpp")
-	err = templates.CreateFileFromTemplate(args.Templates, mainCppPath, "cpp.main_cpp", nil)
+	err = templates.CreateFileFromTemplate(args.Templates, mainCppPath, "cpp-make.main_cpp", nil)
 	if err != nil {
 		return err
 	}
 
 	// create Makefile
 	makefilePath := filepath.Join(args.RootPath, "Makefile")
-	err = templates.CreateFileFromTemplate(args.Templates, makefilePath, "cpp.makefile", args)
-	if err != nil {
-		return err
-	}
+	err = templates.CreateFileFromTemplate(args.Templates, makefilePath, "cpp-make.makefile", args)
 
-	return nil
+	return err
 }

@@ -5,7 +5,8 @@ import (
 	"flag"
 	"fmt"
 	"github.com/moeenn/projects/internal/templates"
-	"github.com/moeenn/projects/internal/templates/cpp"
+	"github.com/moeenn/projects/internal/templates/cppCmake"
+	"github.com/moeenn/projects/internal/templates/cppMake"
 	"github.com/moeenn/projects/internal/templates/javaGradle"
 	"github.com/moeenn/projects/internal/templates/js"
 	"github.com/moeenn/projects/internal/templates/python"
@@ -18,7 +19,7 @@ import (
 var stubFS embed.FS
 
 func main() {
-	templatePtr := flag.String("template", "cpp", "Project template to use. Valid options are 'cpp', 'js', 'java-gradle', 'python'")
+	templatePtr := flag.String("template", "cpp", "Project template to use. Valid options are 'cpp-make', 'cpp-cmake', 'js', 'java-gradle', 'python'")
 	projectNamePtr := flag.String("name", "sandbox", "Name of project being initialized")
 	flag.Parse()
 
@@ -36,8 +37,11 @@ func main() {
 	}
 
 	switch *templatePtr {
-	case "cpp":
-		err = cpp.Initialize(templateArgs)
+	case "cpp-make":
+		err = cppMake.Initialize(templateArgs)
+
+	case "cpp-cmake":
+		err = cppCmake.Initialize(templateArgs)
 
 	case "js":
 		err = js.Initialize(templateArgs)

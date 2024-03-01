@@ -1,4 +1,4 @@
-{{ define "cpp.main_cpp" }}
+{{ define "cpp-make.main_cpp" }}
 #include <iostream>
 
 int main() { 

@@ -1,4 +1,4 @@
-{{ define "cpp.makefile" }}
+{{ define "cpp-make.makefile" }}
 PROJECT = {{ .ProjectName }}
 
 CC = clang++
