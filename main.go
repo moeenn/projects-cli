@@ -53,12 +53,12 @@ func main() {
 		err = python.Initialize(templateArgs)
 
 	default:
-		err = fmt.Errorf("Invalid project template name: %s", *templatePtr)
+		err = fmt.Errorf("invalid project template name: %s", *templatePtr)
 	}
 
 	if err != nil {
 		// remove any created files in case of error
-		os.Remove(templateArgs.RootPath)
+		_ = os.Remove(templateArgs.RootPath)
 
 		// report the error
 		fmt.Fprintf(os.Stderr, "Error: %s\n", err.Error())

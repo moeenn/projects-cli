@@ -16,7 +16,9 @@ func CreateFileFromTemplate(templates *template.Template, filePath string, templ
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	defer func() {
+		_ = file.Close()
+	}()
 
 	err = templates.ExecuteTemplate(file, templateName, data)
 	if err != nil {
