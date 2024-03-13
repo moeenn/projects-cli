@@ -2,7 +2,7 @@
 import test from "node:test"
 import assert from "node:assert/strict"
 
-test("entity position", async () => {
+test("simple test", async () => {
   assert.equal(true, true)
 })
 {{ end }}
