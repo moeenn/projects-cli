@@ -1,6 +1,6 @@
 {{ define "js.index_mjs" }}
 /** @returns {Promise<void>} */
-export async function main() {
+async function main() {
   console.log("Hello world")
 }
 
