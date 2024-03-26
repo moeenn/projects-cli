@@ -28,7 +28,7 @@ def test(c, docs=False) -> None:
 
 @task
 def fmt(c, docs=False) -> None:
-    c.run(f"black {APP}")
+    c.run(f"{PI} -m ruff format {APP}")
 
 
 @task

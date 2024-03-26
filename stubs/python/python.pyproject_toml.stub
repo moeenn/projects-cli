@@ -5,7 +5,6 @@ version = "1.0.0"
 dependencies = [
     "invoke",
     "ruff",
-    "black",
     "pyinstaller"
 ]
 
