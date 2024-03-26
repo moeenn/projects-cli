@@ -3,7 +3,9 @@
 *.pyc
 __pycache__
 .vscode
-build
+build/
 *.egg-info
 .*_cache
+dist/
+.DS_Store
 {{ end }}

@@ -6,6 +6,7 @@ dependencies = [
     "invoke",
     "ruff",
     "black",
+    "pyinstaller"
 ]
 
 [tool.black]

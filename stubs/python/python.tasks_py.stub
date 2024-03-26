@@ -5,7 +5,10 @@ import os
 
 PI = "python"
 PIP = "pip"
-APP = "./app"
+ROOT = os.getcwd()
+APP = os.path.join(ROOT, "app")
+MAIN = os.path.join(ROOT, "main.py")
+BUILD_DIR = os.path.join(ROOT, "build")
 
 
 """
@@ -15,7 +18,7 @@ Example: invoke dev
 
 @task
 def start(c, docs=False) -> None:
-    c.run(f"{PI} ./main.py")
+    c.run(f"{PI} {MAIN}")
 
 
 @task
@@ -33,16 +36,22 @@ def lint(c, docs=False) -> None:
     c.run(f"{PI} -m ruff check {APP}")
 
 
+@task
+def build(c, docs=False) -> None:
+    c.run(f"pyinstaller --onefile --specpath={BUILD_DIR} {MAIN}")
+    
+
 @task 
 def clean(c, docs=False) -> None:
     # recursively remove __pycache__ directories from project
     print("Removing cache files...")
     c.run("find . -type d -name  '__pycache__' -exec rm -r {} +")
-    c.run("rm -r .*_cache >& /dev/null")
-    c.run("rm -r *.egg-info >& /dev/null")
 
-    build_dir = os.path.join(os.getcwd(), "build")
-    if os.path.exists(build_dir):
-        c.run(f"rm -r {build_dir}")
+    dist_dir = os.path.join(os.getcwd(), "dist")        
+    if os.path.exists(dist_dir):
+        c.run(f"rm -rf {dist_dir}")
+
+    if os.path.exists(BUILD_DIR):
+        c.run(f"rm -r {BUILD_DIR}")
 
 {{ end }}
