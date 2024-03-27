@@ -28,6 +28,9 @@ $ invoke test
 $ invoke fmt 
 $ invoke lint
 
+# compile to stand-alone executable
+$ invoke build
+
 # perform temporary files cleanup
 $ invoke clean
 ```
