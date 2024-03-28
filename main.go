@@ -4,24 +4,38 @@ import (
 	"embed"
 	"flag"
 	"fmt"
+	"os"
+	"path/filepath"
+	"strings"
+	"text/template"
+
 	"github.com/moeenn/projects/internal/templates"
 	"github.com/moeenn/projects/internal/templates/cppCmake"
 	"github.com/moeenn/projects/internal/templates/cppMake"
 	"github.com/moeenn/projects/internal/templates/javaGradle"
 	"github.com/moeenn/projects/internal/templates/js"
 	"github.com/moeenn/projects/internal/templates/python"
-	"os"
-	"path/filepath"
-	"text/template"
 )
 
 //go:embed stubs
 var stubFS embed.FS
 
+var (
+	TEMPLATE_NAMES = [5]string{
+		"cpp-cmake", "cpp-make", "javascript (or 'js')", "java-gradle", "python",
+	}
+)
+
 func main() {
-	templatePtr := flag.String("template", "cpp", "Project template to use. Valid options are 'cpp-make', 'cpp-cmake', 'js', 'java-gradle', 'python'")
+	templatePtr := flag.String("template", TEMPLATE_NAMES[0], "Project template to use")
 	projectNamePtr := flag.String("name", "sandbox", "Name of project being initialized")
+	listTemplatesPtr := flag.Bool("list", false, "Print list of available template names")
 	flag.Parse()
+
+	if *listTemplatesPtr {
+		fmt.Printf("Valid templates include: \n - %s\n", strings.Join(TEMPLATE_NAMES[:], "\n - "))
+		return
+	}
 
 	cwd, err := os.Getwd()
 	if err != nil {

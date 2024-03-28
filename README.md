@@ -12,10 +12,12 @@ $ go install github.com/moeenn/projects@latest
 
 ```
 Usage of projects:
+  -list
+    	Print list of available template names
   -name string
-        Name of project being initialized (default "sandbox")
+    	Name of project being initialized (default "sandbox")
   -template string
-        Project template to use. Valid options are 'cpp-make', 'cpp-cmake', 'js', 'java-gradle', 'python' (default "cpp")
+    	Project template to use (default "cpp-cmake")
 ```
 
 ### Build from source
