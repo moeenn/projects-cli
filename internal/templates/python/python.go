@@ -81,9 +81,9 @@ func initFiles(args *templates.TemplateArgs) error {
 		return err
 	}
 
-	// create pyproject.toml file
-	pyprojectTomlPath := filepath.Join(args.RootPath, "pyproject.toml")
-	err = templates.CreateFileFromTemplate(args.Templates, pyprojectTomlPath, "python.pyproject_toml", args)
+	// create requirements.txt file
+	requirementsTxtPath := filepath.Join(args.RootPath, "requirements.txt")
+	err = templates.CreateFileFromTemplate(args.Templates, requirementsTxtPath, "python.requirements_txt", nil)
 	if err != nil {
 		return err
 	}
