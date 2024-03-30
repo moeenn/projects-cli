@@ -10,6 +10,7 @@ import (
 	"text/template"
 
 	"github.com/moeenn/projects/internal/templates"
+	"github.com/moeenn/projects/internal/templates/c"
 	"github.com/moeenn/projects/internal/templates/cppCmake"
 	"github.com/moeenn/projects/internal/templates/cppMake"
 	"github.com/moeenn/projects/internal/templates/javaGradle"
@@ -21,8 +22,8 @@ import (
 var stubFS embed.FS
 
 var (
-	TEMPLATE_NAMES = [5]string{
-		"cpp-cmake", "cpp-make", "javascript (or 'js')", "java-gradle", "python",
+	TEMPLATE_NAMES = [6]string{
+		"c", "cpp-cmake", "cpp-make", "javascript (or 'js')", "java-gradle", "python",
 	}
 )
 
@@ -51,6 +52,9 @@ func main() {
 	}
 
 	switch *templatePtr {
+	case "c":
+		err = c.Initialize(templateArgs)
+
 	case "cpp-make":
 		err = cppMake.Initialize(templateArgs)
 
@@ -71,11 +75,15 @@ func main() {
 	}
 
 	if err != nil {
-		// remove any created files in case of error
-		_ = os.Remove(templateArgs.RootPath)
-
 		// report the error
 		fmt.Fprintf(os.Stderr, "Error: %s\n", err.Error())
+
+		// cleanup: remove any created files in case of error
+		err = os.Remove(templateArgs.RootPath)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error: %s\n", err.Error())
+		}
+
 		os.Exit(1)
 	}
 }
