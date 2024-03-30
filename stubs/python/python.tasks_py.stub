@@ -32,7 +32,7 @@ def fmt(c, docs=False) -> None:
 
 
 @task
-def lint(c, docs=False) -> None:
+def check(c, docs=False) -> None:
     c.run(f"{PI} -m ruff check {APP}")
 
 
