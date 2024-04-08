@@ -61,7 +61,7 @@ func main() {
 	case "cpp-cmake":
 		err = cppCmake.Initialize(templateArgs)
 
-	case "js":
+	case "js", "javascript":
 		err = js.Initialize(templateArgs)
 
 	case "java-gradle":
