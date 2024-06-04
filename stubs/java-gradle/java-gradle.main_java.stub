@@ -1,5 +1,5 @@
 {{ define "java-gradle.main_java" }}
-package com.{{ .ProjectName }};
+package {{ .ProjectName }};
 
 public class Main {
 	public static void main(String[] args) {

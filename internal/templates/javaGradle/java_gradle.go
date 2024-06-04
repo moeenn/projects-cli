@@ -2,9 +2,10 @@ package javaGradle
 
 import (
 	"fmt"
-	"github.com/moeenn/projects/internal/templates"
 	"os"
 	"path/filepath"
+
+	"github.com/moeenn/projects/internal/templates"
 )
 
 func Initialize(args *templates.TemplateArgs) error {
@@ -30,14 +31,14 @@ func initDirectoryStructure(args *templates.TemplateArgs) error {
 	}
 
 	// create src directory
-	srcPath := filepath.Join(args.RootPath, "src", "main", "java", "com", args.ProjectName)
+	srcPath := filepath.Join(args.RootPath, "src", "main", "java", args.ProjectName)
 	err = os.MkdirAll(srcPath, os.ModePerm)
 	if err != nil {
 		return err
 	}
 
 	// create test directory
-	testPath := filepath.Join(args.RootPath, "src", "test", "java", "com", args.ProjectName)
+	testPath := filepath.Join(args.RootPath, "src", "test", "java", args.ProjectName)
 	err = os.MkdirAll(testPath, os.ModePerm)
 	if err != nil {
 		return err
@@ -47,8 +48,8 @@ func initDirectoryStructure(args *templates.TemplateArgs) error {
 }
 
 func initFiles(args *templates.TemplateArgs) error {
-	srcPath := filepath.Join(args.RootPath, "src", "main", "java", "com", args.ProjectName)
-	testPath := filepath.Join(args.RootPath, "src", "test", "java", "com", args.ProjectName)
+	srcPath := filepath.Join(args.RootPath, "src", "main", "java", args.ProjectName)
+	testPath := filepath.Join(args.RootPath, "src", "test", "java", args.ProjectName)
 
 	// create gitignore
 	gitignorePath := filepath.Join(args.RootPath, ".gitignore")

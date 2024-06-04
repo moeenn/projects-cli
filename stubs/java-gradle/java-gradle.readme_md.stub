@@ -19,7 +19,7 @@ $ gradle build
 $ gradle jar
 
 # execute jar file 
-$ java -jar ./build/libs/com.{{ .ProjectName }}-0.0.1.jar
+$ java -jar ./build/libs/{{ .ProjectName }}-0.0.1.jar
 
 # list gradle background daemon details
 $ gradle --status

@@ -5,7 +5,7 @@ plugins {
 }
 
 application {
-    mainClass = 'com.{{ .ProjectName }}.Main'
+    mainClass = '{{ .ProjectName }}.Main'
 }
 
 repositories { 
@@ -14,9 +14,9 @@ repositories {
 
 jar {
     archiveVersion =  '0.0.1'
-    archiveBaseName = 'com.{{ .ProjectName }}'
+    archiveBaseName = '{{ .ProjectName }}'
     manifest {
-        attributes['Main-Class'] = 'com.{{ .ProjectName }}.Main'
+        attributes['Main-Class'] = '{{ .ProjectName }}.Main'
     }
 }
 

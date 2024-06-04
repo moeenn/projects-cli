@@ -1,5 +1,5 @@
 {{ define "java-gradle.main_test_java" }}
-package com.{{ .ProjectName }};
+package {{ .ProjectName }};
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
