@@ -16,14 +16,15 @@ import (
 	"github.com/moeenn/projects/internal/templates/javaGradle"
 	"github.com/moeenn/projects/internal/templates/js"
 	"github.com/moeenn/projects/internal/templates/python"
+	"github.com/moeenn/projects/internal/templates/ts"
 )
 
 //go:embed stubs
 var stubFS embed.FS
 
 var (
-	TEMPLATE_NAMES = [6]string{
-		"c", "cpp-cmake", "cpp-make", "javascript (or 'js')", "java-gradle", "python",
+	TEMPLATE_NAMES = [7]string{
+		"c", "cpp-cmake", "cpp-make", "javascript (or 'js')", "typescript (or 'ts')", "java-gradle", "python",
 	}
 )
 
@@ -63,6 +64,9 @@ func main() {
 
 	case "js", "javascript":
 		err = js.Initialize(templateArgs)
+
+	case "ts", "typescript":
+		err = ts.Initialize(templateArgs)
 
 	case "java-gradle":
 		err = javaGradle.Initialize(templateArgs)

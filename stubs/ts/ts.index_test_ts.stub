@@ -1,0 +1,5 @@
+{{ define "ts.index_test_ts" }}
+test("test entry-point", () => {
+  expect(true).toBeTruthy()
+})  
+{{ end }}

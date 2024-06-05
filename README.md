@@ -20,8 +20,28 @@ Usage of projects:
     	Project template to use (default "cpp-cmake")
 ```
 
+### Available templates
+
+```bash
+$ projects -list
+
+Valid templates include: 
+ - c
+ - cpp-cmake
+ - cpp-make
+ - javascript (or 'js')
+ - typescript (or 'ts')
+ - java-gradle
+ - python
+```
+
 ### Build from source
 
 ```bash
 $ go build .
 ```
+
+### Todo
+
+- [ ] Allow initializing git repositories
+- [ ] Update Python template

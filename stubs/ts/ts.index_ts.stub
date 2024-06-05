@@ -1,0 +1,7 @@
+{{ define "ts.index_ts" }}
+function main(): void {
+  console.log("Hello world")
+}
+
+main()
+{{ end }}
