@@ -1,13 +1,11 @@
 {{ define "python.app_test_py" }}
 from unittest import TestCase
-from app import Application
+from app import random_number
 
 
 class TestApp(TestCase):
-    app = Application()
-
     def test_random_number(self) -> None:
-        result = self.app.random_number()
+        result = random_number()
         self.assertEqual(result, 42)
 		
 {{ end }}

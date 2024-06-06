@@ -44,4 +44,3 @@ $ go build .
 ### Todo
 
 - [ ] Allow initializing git repositories
-- [ ] Update Python template

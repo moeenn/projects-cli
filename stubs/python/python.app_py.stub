@@ -1,9 +1,9 @@
 {{ define "python.app_py" }}
-class Application:
-    def run(self):
-        print("Hello world from application")
+def main() -> None:
+    print("Hello world")
 
-    def random_number(self) -> int:
-        return 42
+
+def random_number() -> int:
+    return 42
 
 {{ end }}

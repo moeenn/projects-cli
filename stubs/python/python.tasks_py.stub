@@ -11,10 +11,9 @@ MAIN = os.path.join(ROOT, "main.py")
 BUILD_DIR = os.path.join(ROOT, "build")
 
 
-"""
-Project task commands: Tasks can be executed using command `invoke <task-name>`
-Example: invoke dev  
-"""
+# Project task commands: Tasks can be executed using command `invoke <task-name>`
+# Example: invoke dev  
+
 
 @task
 def start(c, docs=False) -> None:
@@ -53,5 +52,5 @@ def clean(c, docs=False) -> None:
 
     if os.path.exists(BUILD_DIR):
         c.run(f"rm -r {BUILD_DIR}")
-
+        
 {{ end }}

@@ -4,7 +4,7 @@
 ### Setup
 
 ```bash
-# create a new virutual environment
+# create a new virutual environment (if not already created)
 $ python -m venv .venv
 
 # activate the environment
@@ -26,12 +26,13 @@ $ invoke test
 
 # format and lint code
 $ invoke fmt 
-$ invoke lint
+$ invoke check
 
-# compile to stand-alone executable
+# compile to stand-alone distributable executable
 $ invoke build
 
 # perform temporary files cleanup
 $ invoke clean
 ```
+
 {{ end }}

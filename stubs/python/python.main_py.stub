@@ -1,10 +1,5 @@
 {{ define "python.main_py" }}
-from app.app import Application
-
-
-def main() -> None:
-    app = Application()
-    app.run()
+from app.app import main
 
 
 if __name__ == "__main__":
