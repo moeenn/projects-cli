@@ -69,7 +69,8 @@ func main() {
 		err = ts.Initialize(templateArgs)
 
 	case "java-gradle":
-		err = javaGradle.Initialize(templateArgs)
+		c := javaGradle.NewJavaGradleConfig(templateArgs)
+		err = templateArgs.Initialize("Java (Gradle)", c)
 
 	case "python":
 		err = python.Initialize(templateArgs)
