@@ -1,0 +1,60 @@
+#!/usr/bin/python3
+
+from dataclasses import dataclass
+from enum import Enum
+import os
+import glob
+
+
+binary_name = "projects"
+version = "1.0"
+out_dir = os.path.join(os.getcwd(), "releases")
+
+
+class OS(str, Enum):
+  Windows = "windows"
+  Linux = "linux"
+  Mac = "darwin"
+
+  def __str__(self) -> str:
+    return self.value
+
+
+class Arch(str, Enum):
+  AMD64 = "amd64"
+  ARM64 = "arm64"
+
+  def __str__(self) -> str:
+    return self.value
+
+
+@dataclass
+class Release:
+  os: OS
+  arch: Arch
+  ext: str = ""
+
+
+target_releases: list[Release] = [
+  Release(os=OS.Windows, arch=Arch.AMD64, ext=".exe"),
+  Release(os=OS.Linux, arch=Arch.AMD64), 
+  Release(os=OS.Linux, arch=Arch.ARM64),
+  Release(os=OS.Mac, arch=Arch.AMD64),  
+  Release(os=OS.Mac, arch=Arch.AMD64), # apple silicon 
+]
+
+if not os.path.exits(out_dir):
+  os.makedirs(out_dir)
+
+
+existing_files = glob.glob(os.path.join(out_dir, "*"))
+for file in existing_files:
+  os.remove(file)
+
+
+for release in target_releases:
+  file_name = f"{binary_name}-v{version}-{release.os}-{release.arch}{release.ext}"
+  out_file = os.path.join(out_dir, file_name)
+  command = f"GOOS={release.os} GOARCH={release.arch} go build -o {out_file}"
+  print(f"Building: {file_name}")
+  os.system(command)
