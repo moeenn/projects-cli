@@ -40,21 +40,29 @@ target_releases: list[Release] = [
   Release(os=OS.Linux, arch=Arch.AMD64), 
   Release(os=OS.Linux, arch=Arch.ARM64),
   Release(os=OS.Mac, arch=Arch.AMD64),  
-  Release(os=OS.Mac, arch=Arch.AMD64), # apple silicon 
+  Release(os=OS.Mac, arch=Arch.ARM64), # apple silicon 
 ]
 
-if not os.path.exits(out_dir):
-  os.makedirs(out_dir)
+def main() -> None:
+  if not os.path.exists(out_dir):
+    os.makedirs(out_dir)
 
 
-existing_files = glob.glob(os.path.join(out_dir, "*"))
-for file in existing_files:
-  os.remove(file)
+  existing_files = glob.glob(os.path.join(out_dir, "*"))
+  for file in existing_files:
+    os.remove(file)
 
 
-for release in target_releases:
-  file_name = f"{binary_name}-v{version}-{release.os}-{release.arch}{release.ext}"
-  out_file = os.path.join(out_dir, file_name)
-  command = f"GOOS={release.os} GOARCH={release.arch} go build -o {out_file}"
-  print(f"Building: {file_name}")
-  os.system(command)
+  for release in target_releases:
+    file_name = f"{binary_name}-v{version}-{release.os}-{release.arch}{release.ext}"
+    out_file = os.path.join(out_dir, file_name)
+    command = f"GOOS={release.os} GOARCH={release.arch} go build -o {out_file}"
+    print(f"Building: {file_name}")
+    os.system(command)
+
+
+if __name__ == "__main__":
+  try:
+    main()
+  except Exception as ex:
+    print(f"Error: {repr(ex)}")
