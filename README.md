@@ -8,9 +8,23 @@ A portable CLI tool for initializing programming projects from pre-defined templ
 
 ### Installation
 
+#### Download release
+
+Please see the [Releases](https://github.com/moeenn/projects/releases) section to download the pre-built binary for your system.
+
+
+#### Install using Go tooling 
+
 ```bash
 $ go install github.com/moeenn/projects@latest
 ```
+
+#### Build from source
+
+```bash
+$ go build .
+```
+
 
 ### Usage
 
@@ -37,10 +51,4 @@ Valid templates include:
  - typescript (or 'ts')
  - java-gradle
  - python
-```
-
-### Build from source
-
-```bash
-$ go build .
 ```
