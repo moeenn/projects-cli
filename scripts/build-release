@@ -7,7 +7,7 @@ import glob
 
 
 binary_name = "projects"
-version = "1.0"
+version = 1.0
 out_dir = os.path.join(os.getcwd(), "releases")
 
 
@@ -47,11 +47,9 @@ def main() -> None:
   if not os.path.exists(out_dir):
     os.makedirs(out_dir)
 
-
   existing_files = glob.glob(os.path.join(out_dir, "*"))
   for file in existing_files:
     os.remove(file)
-
 
   for release in target_releases:
     file_name = f"{binary_name}-v{version}-{release.os}-{release.arch}{release.ext}"
