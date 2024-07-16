@@ -1,4 +1,4 @@
-{{ define "python.app_py" }}
+{{ define "py.app_py" }}
 def main() -> None:
     print("Hello world")
 

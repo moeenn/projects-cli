@@ -1,4 +1,4 @@
-{{ define "python.main_py" }}
+{{ define "py.main_py" }}
 from app.app import main
 
 

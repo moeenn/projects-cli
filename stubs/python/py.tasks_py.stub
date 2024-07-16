@@ -1,4 +1,4 @@
-{{ define "python.tasks_py" }}
+{{ define "py.tasks_py" }}
 from invoke import task
 import os
 

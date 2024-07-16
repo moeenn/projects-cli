@@ -46,5 +46,5 @@ Valid templates include:
  - javascript (or 'js')
  - typescript (or 'ts')
  - java-gradle
- - python
+ - python (or 'py')
 ```

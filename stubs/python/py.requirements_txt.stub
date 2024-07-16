@@ -1,4 +1,4 @@
-{{ define "python.requirements_txt" }}
+{{ define "py.requirements_txt" }}
 invoke==2.2.0
 ruff==0.3.4
 pyinstaller==6.5.0

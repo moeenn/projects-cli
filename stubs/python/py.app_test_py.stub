@@ -1,4 +1,4 @@
-{{ define "python.app_test_py" }}
+{{ define "py.app_test_py" }}
 from unittest import TestCase
 from app import random_number
 

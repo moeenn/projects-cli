@@ -1,4 +1,4 @@
-{{ define "python.readme_md" }}
+{{ define "py.readme_md" }}
 ## {{ .ProjectName }}
 
 ### Setup
