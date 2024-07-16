@@ -24,7 +24,7 @@ var stubFS embed.FS
 
 var (
 	TEMPLATE_NAMES = [7]string{
-		"c", "cpp-cmake", "cpp-make", "javascript (or 'js')", "typescript (or 'ts')", "java-gradle", "python",
+		"c", "cpp-cmake", "cpp-make", "javascript (or 'js')", "typescript (or 'ts')", "java-gradle", "python (or 'py')",
 	}
 )
 
@@ -77,8 +77,9 @@ func main() {
 		config = javaGradle.NewJavaGradleConfig(templateArgs)
 		err = templateArgs.Initialize("Java (Gradle)", config)
 
-	case "python":
-		err = python.Initialize(templateArgs)
+	case "py", "python":
+		config = python.NewPythonConfig(templateArgs)
+		err = templateArgs.Initialize("Python", config)
 
 	default:
 		err = fmt.Errorf("invalid project template name: %s", *templatePtr)
