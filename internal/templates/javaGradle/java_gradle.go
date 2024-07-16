@@ -6,7 +6,6 @@ import (
 	"github.com/moeenn/projects/internal/templates"
 )
 
-// TODO: implement similar function for the rest of the templates
 func NewJavaGradleConfig(args *templates.TemplateArgs) *templates.TemplateConfig {
 	mainSrc := filepath.Join(args.RootPath, "src", "main", "java", args.ProjectName)
 	testSrc := filepath.Join(args.RootPath, "src", "test", "java", args.ProjectName)

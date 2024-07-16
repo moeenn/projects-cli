@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
 	"text/template"
 )
@@ -31,7 +32,9 @@ func (a *TemplateArgs) Initialize(key string, config *TemplateConfig) error {
 		return err
 	}
 
-	// TODO: generate gitignore file
+	if err := config.RenderGitignore(a); err != nil {
+		return err
+	}
 
 	return nil
 }
@@ -91,4 +94,24 @@ func (c *TemplateConfig) RenderFiles(args *TemplateArgs) error {
 	return nil
 }
 
-// TODO: implement method on TemplateConfig to render gitignore file
+func (c *TemplateConfig) RenderGitignore(args *TemplateArgs) error {
+	path := filepath.Join(args.RootPath, ".gitignore")
+	file, err := os.Create(path)
+	defer func() {
+		if err := file.Close(); err != nil {
+			fmt.Printf("failed to close '.gitignore' file after write")
+		}
+	}()
+
+	if err != nil {
+		return fmt.Errorf("failed to created .gitignore: %s", err.Error())
+	}
+
+	for _, entry := range c.Gitignore {
+		if _, err := file.WriteString(entry + "\n"); err != nil {
+			return fmt.Errorf("failed to write to '.gitignore' file: %s", err.Error())
+		}
+	}
+
+	return nil
+}

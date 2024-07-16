@@ -52,16 +52,18 @@ func main() {
 		RootPath:    filepath.Join(cwd, *projectNamePtr),
 	}
 
+	var config *templates.TemplateConfig
 	switch *templatePtr {
 	case "c":
-		config := c.NewCConfig(templateArgs)
+		config = c.NewCConfig(templateArgs)
 		err = templateArgs.Initialize("C", config)
 
 	case "cpp-make":
 		err = cppMake.Initialize(templateArgs)
 
 	case "cpp-cmake":
-		err = cppCmake.Initialize(templateArgs)
+		config = cppCmake.NewCPPCmakeConfig(templateArgs)
+		err = templateArgs.Initialize("C++ (Cmake)", config)
 
 	case "js", "javascript":
 		err = js.Initialize(templateArgs)
@@ -70,7 +72,7 @@ func main() {
 		err = ts.Initialize(templateArgs)
 
 	case "java-gradle":
-		config := javaGradle.NewJavaGradleConfig(templateArgs)
+		config = javaGradle.NewJavaGradleConfig(templateArgs)
 		err = templateArgs.Initialize("Java (Gradle)", config)
 
 	case "python":
@@ -85,7 +87,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error: %s\n", err.Error())
 
 		// cleanup: remove any created files in case of error
-		err = os.Remove(templateArgs.RootPath)
+		err = os.RemoveAll(templateArgs.RootPath)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Error: %s\n", err.Error())
 		}
