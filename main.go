@@ -59,7 +59,8 @@ func main() {
 		err = templateArgs.Initialize("C", config)
 
 	case "cpp-make":
-		err = cppMake.Initialize(templateArgs)
+		config = cppMake.NewCPPCmakeConfig(templateArgs)
+		err = templateArgs.Initialize("C++ (Make)", config)
 
 	case "cpp-cmake":
 		config = cppCmake.NewCPPCmakeConfig(templateArgs)
