@@ -1,7 +1,0 @@
-{{ define "cpp-make.gitignore" }}
-bin/*
-*.o
-.cache
-compile_commands.json
-.DS_Store
-{{ end }}

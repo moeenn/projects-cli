@@ -67,7 +67,8 @@ func main() {
 		err = templateArgs.Initialize("C++ (Cmake)", config)
 
 	case "js", "javascript":
-		err = js.Initialize(templateArgs)
+		config = js.NewJSConfig(templateArgs)
+		err = templateArgs.Initialize("Javascript (vanilla)", config)
 
 	case "ts", "typescript":
 		err = ts.Initialize(templateArgs)

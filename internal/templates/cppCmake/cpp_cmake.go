@@ -6,6 +6,8 @@ import (
 	"github.com/moeenn/projects/internal/templates"
 )
 
+// TODO: add README.md file
+
 func NewCPPCmakeConfig(args *templates.TemplateArgs) *templates.TemplateConfig {
 	mainSrc := filepath.Join(args.RootPath, "src")
 	files := map[string]string{
