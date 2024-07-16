@@ -1,5 +1,0 @@
-{{ define "ts.gitignore" }}
-node_modules
-build
-.DS_Store
-{{ end }}

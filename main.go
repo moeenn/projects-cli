@@ -71,7 +71,8 @@ func main() {
 		err = templateArgs.Initialize("Javascript (vanilla)", config)
 
 	case "ts", "typescript":
-		err = ts.Initialize(templateArgs)
+		config = ts.NewTSConfig(templateArgs)
+		err = templateArgs.Initialize("Typescript", config)
 
 	case "java-gradle":
 		config = javaGradle.NewJavaGradleConfig(templateArgs)
