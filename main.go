@@ -54,7 +54,8 @@ func main() {
 
 	switch *templatePtr {
 	case "c":
-		err = c.Initialize(templateArgs)
+		config := c.NewCConfig(templateArgs)
+		err = templateArgs.Initialize("C", config)
 
 	case "cpp-make":
 		err = cppMake.Initialize(templateArgs)
@@ -69,8 +70,8 @@ func main() {
 		err = ts.Initialize(templateArgs)
 
 	case "java-gradle":
-		c := javaGradle.NewJavaGradleConfig(templateArgs)
-		err = templateArgs.Initialize("Java (Gradle)", c)
+		config := javaGradle.NewJavaGradleConfig(templateArgs)
+		err = templateArgs.Initialize("Java (Gradle)", config)
 
 	case "python":
 		err = python.Initialize(templateArgs)
