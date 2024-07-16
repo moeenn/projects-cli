@@ -28,7 +28,7 @@ var (
 	}
 )
 
-func main() {
+func run() error {
 	templatePtr := flag.String("template", TEMPLATE_NAMES[0], "Project template to use")
 	projectNamePtr := flag.String("name", "sandbox", "Name of project being initialized")
 	listTemplatesPtr := flag.Bool("list", false, "Print list of available template names")
@@ -36,13 +36,12 @@ func main() {
 
 	if *listTemplatesPtr {
 		fmt.Printf("Valid templates include: \n - %s\n", strings.Join(TEMPLATE_NAMES[:], "\n - "))
-		return
+		return nil
 	}
 
 	cwd, err := os.Getwd()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Failed to detect project current directory: %s", err.Error())
-		os.Exit(1)
+		return fmt.Errorf("failed to detect project current directory: %s", err.Error())
 	}
 
 	stubTemplates := template.Must(template.ParseFS(stubFS, "stubs/**/*.stub"))
@@ -87,15 +86,21 @@ func main() {
 	}
 
 	if err != nil {
-		// report the error
-		fmt.Fprintf(os.Stderr, "Error: %s\n", err.Error())
-
 		// cleanup: remove any created files in case of error
 		err = os.RemoveAll(templateArgs.RootPath)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Error: %s\n", err.Error())
 		}
 
+		return err
+	}
+
+	return nil
+}
+
+func main() {
+	if err := run(); err != nil {
+		fmt.Fprintf(os.Stderr, "Error: %s\n", err.Error())
 		os.Exit(1)
 	}
 }
