@@ -6,6 +6,8 @@ import (
 	"github.com/moeenn/projects/internal/templates"
 )
 
+// TODO: add a README.md file
+
 func NewGolangConfig(args *templates.TemplateArgs) *templates.TemplateConfig {
 	files := map[string]string{
 		"go.main_go": filepath.Join(args.RootPath, "main.go"),
