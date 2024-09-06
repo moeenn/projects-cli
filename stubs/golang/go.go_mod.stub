@@ -1,0 +1,5 @@
+{{ define "go.go_mod" }}
+module {{ .ProjectName }}
+
+go 1.22.0
+{{ end }}

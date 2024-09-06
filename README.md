@@ -1,5 +1,9 @@
 ## Projects
-A portable CLI tool for initializing programming projects from pre-defined templates. This tools is written in GoLang and doesn't have any 3rd-party dependencies.
+A portable CLI tool for initializing programming projects from pre-defined templates. This tools is written in GoLang and doesn't have any 3rd-party dependencies. 
+
+
+### Inspiration
+Golang's tooling is fantastic. It is simple and doesn't require any additional setup for testing, formatting etc. It would be nice if we could replicate a similar experience with other programming languages. Hence, this project was born.
 
 
 ### Installation
@@ -31,7 +35,7 @@ Usage of projects:
   -name string
     	Name of project being initialized (default "sandbox")
   -template string
-    	Project template to use (default "cpp-cmake")
+    	Project template to use (default "go")
 ```
 
 ### Available templates
@@ -40,6 +44,7 @@ Usage of projects:
 $ projects -list
 
 Valid templates include: 
+ - go
  - c
  - cpp-cmake
  - cpp-make
