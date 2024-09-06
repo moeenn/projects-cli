@@ -1,0 +1,13 @@
+{{ define "cpp-cmake.readme_md" }}
+## {{ .ProjectName }}
+
+#### Build from source
+
+```bash
+$ mkdir build
+$ cd ./build
+$ cmake .. && make
+```
+
+**Note**: The compiled binary will be placed in `./build/bin/` directory.
+{{ end }}

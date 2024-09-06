@@ -6,11 +6,10 @@ import (
 	"github.com/moeenn/projects/internal/templates"
 )
 
-// TODO: add README.md file
-
 func NewCPPCmakeConfig(args *templates.TemplateArgs) *templates.TemplateConfig {
 	mainSrc := filepath.Join(args.RootPath, "src")
 	files := map[string]string{
+		"cpp-cmake.readme_md":      filepath.Join(args.RootPath, "README.md"),
 		"cpp-cmake.main_cpp":       filepath.Join(mainSrc, "main.cpp"),
 		"cpp-cmake.cmakelists_txt": filepath.Join(args.RootPath, "CMakeLists.txt"),
 	}
@@ -25,7 +24,7 @@ func NewCPPCmakeConfig(args *templates.TemplateArgs) *templates.TemplateConfig {
 			"Makefile",
 			".cache",
 			"compile_commands.json",
-			"bin",
+			"build",
 			".DS_Store",
 		},
 	}
