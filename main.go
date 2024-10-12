@@ -16,6 +16,7 @@ import (
 	"github.com/moeenn/projects/internal/templates/golang"
 	"github.com/moeenn/projects/internal/templates/javaGradle"
 	"github.com/moeenn/projects/internal/templates/js"
+	"github.com/moeenn/projects/internal/templates/php"
 	"github.com/moeenn/projects/internal/templates/python"
 	"github.com/moeenn/projects/internal/templates/ts"
 )
@@ -24,8 +25,8 @@ import (
 var stubFS embed.FS
 
 var (
-	TEMPLATE_NAMES = [8]string{
-		"go", "c", "cpp-cmake", "cpp-make", "javascript (or 'js')", "typescript (or 'ts')", "java-gradle", "python (or 'py')",
+	TEMPLATE_NAMES = [9]string{
+		"go", "c", "cpp-cmake", "cpp-make", "javascript (or 'js')", "typescript (or 'ts')", "java-gradle", "python (or 'py')", "php",
 	}
 )
 
@@ -85,6 +86,10 @@ func run() error {
 	case "py", "python":
 		config = python.NewPythonConfig(templateArgs)
 		err = templateArgs.Initialize("Python", config)
+
+	case "php":
+		config = php.NewPHPConfig(templateArgs)
+		err = templateArgs.Initialize("PHP", config)
 
 	default:
 		err = fmt.Errorf("invalid project template name: %s", *templatePtr)

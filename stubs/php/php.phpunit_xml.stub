@@ -1,0 +1,9 @@
+{{ define "php.phpunit_xml" }}
+<phpunit colors="true" bootstrap="vendor/autoload.php">
+    <testsuites>
+        <testsuite name="Project Tests">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
+{{ end }}

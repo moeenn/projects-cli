@@ -1,0 +1,22 @@
+{{ define "php.composer_json" }}
+{
+    "name": "sandbox/app",
+    "type": "project",
+    "scripts": {
+        "start": "@php ./src/App.php",
+        "check": "vendor/bin/phpstan analyze",
+        "test": "vendor/bin/phpunit"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sandbox\\App\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.12",
+        "phpunit/phpunit": "^11.4"
+    },
+    "require": {
+    }
+}
+{{ end }}

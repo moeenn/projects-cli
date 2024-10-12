@@ -1,0 +1,23 @@
+{{ define "php.todo_php" }}
+<?php declare(strict_types=1);
+
+namespace Sandbox\App;
+
+class Todo {
+    public string $id;
+
+    public function __construct(
+        public string $title,
+        public bool $done,
+    )
+    {
+        $this->id = uniqid();
+    }
+
+    #[\Override]
+    public function __toString(): string
+    {
+        return "Todo(id={$this->id}, title={$this->title}, done={$this->done})";  
+    }
+}
+{{ end }}

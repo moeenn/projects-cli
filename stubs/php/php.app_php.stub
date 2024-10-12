@@ -1,0 +1,24 @@
+{{ define "php.app_php" }}
+<?php declare(strict_types=1);
+
+namespace Sandbox\App;
+require "vendor/autoload.php";
+
+class App
+{
+    public static function main(): void
+    {
+        $todos = [
+            new Todo(title: "Sample", done: false),
+            new Todo(title: "Example", done: true),
+            new Todo(title: "Random", done: false),
+        ];
+
+        foreach ($todos as &$todo) {
+            echo $todo . PHP_EOL;
+        }
+    }
+}
+
+App::main();
+{{ end }}

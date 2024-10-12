@@ -1,0 +1,14 @@
+{{ define "php.todotest_php" }}
+<?php declare(strict_types=1);
+
+use Sandbox\App\Todo;
+use PHPUnit\Framework\TestCase;
+
+class TodoTest extends TestCase {
+    public function testCreate(): void {
+        $title = 'Sample';
+        $todo = new Todo(title: $title, done: true);
+        $this->assertEquals($todo->title, $title);
+    }
+}
+{{ end }}
