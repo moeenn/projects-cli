@@ -3,7 +3,7 @@ package ts
 import (
 	"path/filepath"
 
-	"github.com/moeenn/projects/internal/templates"
+	"github.com/moeenn/projects-cli/internal/templates"
 )
 
 func NewTSConfig(args *templates.TemplateArgs) *templates.TemplateConfig {

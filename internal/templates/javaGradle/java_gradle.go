@@ -3,7 +3,7 @@ package javaGradle
 import (
 	"path/filepath"
 
-	"github.com/moeenn/projects/internal/templates"
+	"github.com/moeenn/projects-cli/internal/templates"
 )
 
 func NewJavaGradleConfig(args *templates.TemplateArgs) *templates.TemplateConfig {

@@ -3,7 +3,7 @@ package c
 import (
 	"path/filepath"
 
-	"github.com/moeenn/projects/internal/templates"
+	"github.com/moeenn/projects-cli/internal/templates"
 )
 
 func NewCConfig(args *templates.TemplateArgs) *templates.TemplateConfig {

@@ -3,7 +3,7 @@ package php
 import (
 	"path/filepath"
 
-	"github.com/moeenn/projects/internal/templates"
+	"github.com/moeenn/projects-cli/internal/templates"
 )
 
 func NewPHPConfig(args *templates.TemplateArgs) *templates.TemplateConfig {

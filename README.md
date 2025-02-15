@@ -16,7 +16,7 @@ Please see the [Releases](https://github.com/moeenn/projects/releases) section t
 #### Install using Go tooling 
 
 ```bash
-$ go install github.com/moeenn/projects@latest
+$ go install github.com/moeenn/projects-cli@latest
 ```
 
 #### Build from source

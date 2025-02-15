@@ -9,16 +9,16 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/moeenn/projects/internal/templates"
-	"github.com/moeenn/projects/internal/templates/c"
-	"github.com/moeenn/projects/internal/templates/cppCmake"
-	"github.com/moeenn/projects/internal/templates/cppMake"
-	"github.com/moeenn/projects/internal/templates/golang"
-	"github.com/moeenn/projects/internal/templates/javaGradle"
-	"github.com/moeenn/projects/internal/templates/js"
-	"github.com/moeenn/projects/internal/templates/php"
-	"github.com/moeenn/projects/internal/templates/python"
-	"github.com/moeenn/projects/internal/templates/ts"
+	"github.com/moeenn/projects-cli/internal/templates"
+	"github.com/moeenn/projects-cli/internal/templates/c"
+	"github.com/moeenn/projects-cli/internal/templates/cppCmake"
+	"github.com/moeenn/projects-cli/internal/templates/cppMake"
+	"github.com/moeenn/projects-cli/internal/templates/golang"
+	"github.com/moeenn/projects-cli/internal/templates/javaGradle"
+	"github.com/moeenn/projects-cli/internal/templates/js"
+	"github.com/moeenn/projects-cli/internal/templates/php"
+	"github.com/moeenn/projects-cli/internal/templates/python"
+	"github.com/moeenn/projects-cli/internal/templates/ts"
 )
 
 //go:embed stubs
