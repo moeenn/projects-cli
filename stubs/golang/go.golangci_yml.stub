@@ -1,0 +1,13 @@
+{{ define "go.golangci_yml" }}
+linters:
+  enable:
+    - exhaustive
+    - exhaustruct
+    - gosec
+    - nilnil
+    - nilerr
+    - contextcheck
+    - err113
+    - gochecknoinits
+    - godox
+{{end}}

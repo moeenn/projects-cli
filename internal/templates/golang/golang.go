@@ -10,8 +10,9 @@ import (
 
 func NewGolangConfig(args *templates.TemplateArgs) *templates.TemplateConfig {
 	files := map[string]string{
-		"go.main_go": filepath.Join(args.RootPath, "main.go"),
-		"go.go_mod":  filepath.Join(args.RootPath, "go.mod"),
+		"go.main_go":      filepath.Join(args.RootPath, "main.go"),
+		"go.go_mod":       filepath.Join(args.RootPath, "go.mod"),
+		"go.golangci_yml": filepath.Join(args.RootPath, ".golangci.yml"),
 	}
 
 	return &templates.TemplateConfig{
