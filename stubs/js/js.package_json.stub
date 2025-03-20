@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "main": "src/index.mjs",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "start": "node ./src/index.mjs",
     "type-check": "tsc --project jsconfig.json",
@@ -21,36 +22,13 @@
     "tabWidth": 2,
     "trailingComma": "all"
   },
-  "eslintConfig": {
-    "root": true,
-    "extends": "eslint:recommended",
-    "env": {
-      "node": true,
-      "es6": true
-    },
-    "parserOptions": {
-      "sourceType": "module",
-      "ecmaVersion": "latest"
-    },
-    "rules": {
-      "no-console": "warn",
-      "quotes": [
-        "warn",
-        "double",
-        {
-          "allowTemplateLiterals": true,
-          "avoidEscape": true
-        }
-      ],
-      "semi": ["warn", "never"],
-      "no-unused-vars": "warn"
-    }
-  },
   "devDependencies": {
-    "@types/node": "^20.11.22",
-    "eslint": "^8.35.0",
+    "@types/node": "^22.13.10",
+    "@types/punycode": "^2.1.4",
+    "eslint": "^9.22.0",
+    "eslint-plugin-jsdoc": "^50.6.8",
     "prettier": "^3.2.5",
-    "typescript": "^5.3.3"
+    "typescript": "^5.8.2"
   }
 }
 {{ end }}
