@@ -12,15 +12,10 @@ out_dir = os.path.join(os.getcwd(), "releases")
 
 def get_version() -> float:
     from_env = os.environ.get("VERSION")
-    default_version = 1.0
+    default_version = "1.0.0"
     if not from_env:
         return default_version
-
-    try:
-        as_float = float(from_env)
-        return as_float
-    except Exception:
-        raise Exception("Please provide a valid version number")
+    return from_env
 
 
 class OS(str, Enum):
