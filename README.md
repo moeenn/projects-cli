@@ -10,7 +10,7 @@ Golang's tooling is fantastic. It is simple and doesn't require any additional s
 
 #### Download release
 
-Please see the [Releases](https://github.com/moeenn/projects/releases) section to download the pre-built binary for your system.
+Please see the [Releases](https://github.com/moeenn/projects-cli/releases) section to download the pre-built binary for your system.
 
 
 #### Install using Go tooling 
