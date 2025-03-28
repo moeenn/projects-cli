@@ -8,6 +8,9 @@ import (
 
 func NewCPPCmakeConfig(args *templates.TemplateArgs) *templates.TemplateConfig {
 	mainSrc := filepath.Join(args.RootPath, "src")
+	incluesDir := filepath.Join(args.RootPath, "include")
+	buildDir := filepath.Join(args.RootPath, "build")
+
 	files := map[string]string{
 		"cpp-cmake.readme_md":      filepath.Join(args.RootPath, "README.md"),
 		"cpp-cmake.main_cpp":       filepath.Join(mainSrc, "main.cpp"),
@@ -15,7 +18,7 @@ func NewCPPCmakeConfig(args *templates.TemplateArgs) *templates.TemplateConfig {
 	}
 
 	return &templates.TemplateConfig{
-		Directories: []string{mainSrc},
+		Directories: []string{mainSrc, incluesDir, buildDir},
 		Files:       files,
 		Gitignore: []string{
 			".cache",
