@@ -1,12 +1,8 @@
 {{ define "cpp-cmake.cmakelists_txt" }}
-cmake_minimum_required (VERSION 3.10)
+cmake_minimum_required(VERSION 3.10)
+project(sandbox VERSION 1.0.0 LANGUAGES CXX)
 
-set (PROJECT_NAME "{{ .ProjectName }}")
-project (${PROJECT_NAME})
-
-set (CMAKE_CXX_STANDARD 23)
-set (SRC_DIR "${PROJECT_SOURCE_DIR}/src/")
-
+# generate the compile_commands.json file.
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 if (PROJECT_IS_TOP_LEVEL AND UNIX)
     execute_process(
@@ -16,10 +12,10 @@ if (PROJECT_IS_TOP_LEVEL AND UNIX)
     )
 endif()
 
-file (GLOB_RECURSE SRC_FILES "${SRC_DIR}/*.cpp")
-add_executable (${PROJECT_NAME} ${SRC_FILES})
-
-target_compile_options(${PROJECT_NAME} PUBLIC -Wextra -Werror -Wall -Wpedantic -O3)
-target_link_libraries (${PROJECT_NAME} m) # m means -lm
-set (EXECUTABLE_OUTPUT_PATH "bin")
+file(GLOB_RECURSE SOURCES src/*.cpp)
+add_executable(${PROJECT_NAME} ${SOURCES})
+target_include_directories(${PROJECT_NAME} PRIVATE "include")
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 23)
+target_compile_options(${PROJECT_NAME} PUBLIC -Wextra -Werror -Wall -Wpedantic)
+target_link_libraries(${PROJECT_NAME} m) # m means -lm (link math)
 {{ end }}

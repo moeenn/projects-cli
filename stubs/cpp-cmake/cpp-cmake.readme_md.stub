@@ -6,8 +6,8 @@
 ```bash
 $ mkdir build
 $ cd ./build
-$ cmake .. && make
+$ cmake .. -D CMAKE_BUILD_TYPE=Debug && make
 ```
 
-**Note**: The compiled binary will be placed in `./build/bin/` directory.
+**Note**: The compiled binary will be placed in `./build/` directory.
 {{ end }}

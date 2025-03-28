@@ -18,10 +18,6 @@ func NewCPPCmakeConfig(args *templates.TemplateArgs) *templates.TemplateConfig {
 		Directories: []string{mainSrc},
 		Files:       files,
 		Gitignore: []string{
-			"CMakeFiles/*",
-			"cmake_install.cmake",
-			"CMakeCache.txt",
-			"Makefile",
 			".cache",
 			"compile_commands.json",
 			"build",
