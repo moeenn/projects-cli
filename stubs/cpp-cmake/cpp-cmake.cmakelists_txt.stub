@@ -15,6 +15,8 @@ endif()
 file(GLOB_RECURSE SOURCES src/*.cpp)
 add_executable(${PROJECT_NAME} ${SOURCES})
 target_include_directories(${PROJECT_NAME} PRIVATE "include")
+target_link_directories(${PROJECT_NAME} PRIVATE "lib")
+
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 23)
 target_compile_options(${PROJECT_NAME} PUBLIC -Wextra -Werror -Wall -Wpedantic)
 target_link_libraries(${PROJECT_NAME} m) # m means -lm (link math)

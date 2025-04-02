@@ -9,6 +9,7 @@ import (
 func NewCPPCmakeConfig(args *templates.TemplateArgs) *templates.TemplateConfig {
 	mainSrc := filepath.Join(args.RootPath, "src")
 	incluesDir := filepath.Join(args.RootPath, "include")
+	libDir := filepath.Join(args.RootPath, "lib")
 	buildDir := filepath.Join(args.RootPath, "build")
 
 	files := map[string]string{
@@ -18,7 +19,7 @@ func NewCPPCmakeConfig(args *templates.TemplateArgs) *templates.TemplateConfig {
 	}
 
 	return &templates.TemplateConfig{
-		Directories: []string{mainSrc, incluesDir, buildDir},
+		Directories: []string{mainSrc, incluesDir, libDir, buildDir},
 		Files:       files,
 		Gitignore: []string{
 			".cache",
