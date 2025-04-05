@@ -1,4 +1,0 @@
-{{ define "js.gitignore" }}
-node_modules/
-.DS_Store
-{{ end }}

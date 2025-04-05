@@ -12,7 +12,6 @@ import (
 	"github.com/moeenn/projects-cli/internal/templates"
 	"github.com/moeenn/projects-cli/internal/templates/c"
 	"github.com/moeenn/projects-cli/internal/templates/cppCmake"
-	"github.com/moeenn/projects-cli/internal/templates/cppMake"
 	"github.com/moeenn/projects-cli/internal/templates/golang"
 	"github.com/moeenn/projects-cli/internal/templates/javaGradle"
 	"github.com/moeenn/projects-cli/internal/templates/js"
@@ -25,8 +24,8 @@ import (
 var stubFS embed.FS
 
 var (
-	TEMPLATE_NAMES = [9]string{
-		"go", "c", "cpp-cmake", "cpp-make", "javascript (or 'js')", "typescript (or 'ts')", "java-gradle", "python (or 'py')", "php",
+	TEMPLATE_NAMES = [8]string{
+		"go", "c", "cpp-cmake", "javascript (or 'js')", "typescript (or 'ts')", "java-gradle", "python (or 'py')", "php",
 	}
 )
 
@@ -58,10 +57,6 @@ func run() error {
 	case "c":
 		config = c.NewCConfig(templateArgs)
 		err = templateArgs.Initialize("C", config)
-
-	case "cpp-make":
-		config = cppMake.NewCPPCmakeConfig(templateArgs)
-		err = templateArgs.Initialize("C++ (Make)", config)
 
 	case "cpp-cmake":
 		config = cppCmake.NewCPPCmakeConfig(templateArgs)
